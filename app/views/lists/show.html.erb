@@ -1,0 +1,16 @@
+<div class="container">
+<h1> <%= @list.name %> </h1>
+<%= link_to "Add new bookmark" , new_list_bookmark_path(@list) %>
+
+<ul>
+  <% @list.movies.each do |movie| %>
+  <li> <%=movie.title %></li>
+    <% movie.bookmarks.each do |bookmark| %>
+      <p><%= bookmark.comment %></p>
+      <%= link_to "Delete", bookmark_path(bookmark), method: :delete, data: { confirm: "Are you really sure?", class: "btn btn-danger"}  %>
+    <% end %>
+  <% end %>
+</ul>
+<%= link_to "Back", lists_path  %>
+
+</div>
